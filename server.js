@@ -6,7 +6,7 @@ import ejs from 'ejs';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
-
+import userlogic from './routes/users/_index.js';
 const app = express();
 
 const corsOptions = {
@@ -36,6 +36,12 @@ app.use(express.json())
     app.get('/', (req, res) => {
         res.render('users/signup');
     })
+
+
+    app.use('/api',userlogic)
+
+
+
 
 
 // app.listen(PORT, () => `listening to server on http://localhost:${PORT}`);

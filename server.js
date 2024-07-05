@@ -7,6 +7,12 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
 import userlogic from './routes/users/_index.js';
+import connectDB from './models/dbconn.js'
+import jwt from 'jsonwebtoken'
+import sendgrid from '@sendgrid/mail'
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import Session from 'express-session'
+import validator from 'express-validator'
 const app = express();
 
 const corsOptions = {
@@ -24,7 +30,6 @@ const __dirname = dirname(__filename); // Extract directory name
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs'); // Specify EJS as the view engine
 
-// Serve static files from the 'public' directory
 
 
 app.use(express.static(join(__dirname, 'public')));
